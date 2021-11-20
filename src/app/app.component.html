@@ -1,17 +1,19 @@
 <div class="app-wrapper">
 
-  <div class="top-section">
-    <h1>Date</h1>
-    <h2>{{currentDate }}</h2>
+  
+  <div class="bottom-section">
+    <app-tabs></app-tabs>
   </div>
   
   <div class="content-section" [@routeAnim]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
-    
   </div>
 
-  <div class="bottom-section">
-    <app-tabs></app-tabs>
+
+  <div class="top-section">
+    <h1>{{currentDate | date: 'shortTime'}}</h1>
+    <h2>{{currentDate | date: 'longDate'}}</h2>
   </div>
+
 </div>
 
