@@ -15,7 +15,8 @@
 .top-section{
     //background-color: aquamarine;
     text-align: center;
-    padding: 100px 0px;
+    //padding: 100px 0px;
+    padding-bottom: 30px;
     h1{
         font-size: 60px;
         font-weight: bold;
@@ -40,7 +41,7 @@
 .bottom-section{
    // background-color: blueviolet;
     display: flex;
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     app-tabs{
         margin: auto;
     }
