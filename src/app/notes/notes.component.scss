@@ -6,29 +6,7 @@
     overflow-x: auto;
 }
 
-.note-card{
-    background-color: rgba(black, 0.5);
-    color: rgba(white, 0.95);
-    
-    border-radius: 5px;
-    cursor: pointer;
-    
-    padding: 25px;
-
-    transition: 0.2s;
-
-    &:hover{
-        background-color: rgba(black, 0.5);
-        backdrop-filter: blur(3px);
-    }
-    
-}
-
-.note-card-title{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.note-card-content{
-    margin-top: 7px;
+app-note-card{
+    margin-bottom: 10px;
+    display: block;
 }

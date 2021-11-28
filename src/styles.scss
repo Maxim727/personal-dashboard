@@ -38,6 +38,8 @@ h2 .is-bold{
 .buttons-container{
     margin-top: 20px;
     display: flex;
+    gap: 12px;
+
 
     &.buttons-centered{
         justify-content: center;
@@ -83,6 +85,14 @@ h2 .is-bold{
     backdrop-filter: blur(20px);
 }
 
+.form-field{
+    margin-bottom: 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
 .textbox, textarea{
     font-size: 18px;
     font-family: inherit;
@@ -92,7 +102,7 @@ h2 .is-bold{
     border: 2px solid rgba(black, 0.3);
     border-radius: 4px;
 
-    margin-bottom: 20px;
+   // margin-bottom: 20px;
     display: block;
 
     &:hover{

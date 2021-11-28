@@ -1,10 +1,9 @@
 <div class="notes-wrapper">
     <div class="container">
         <div class="notes-list"> 
-            <div class="note-card">
-                <div class="note-card-title">This is note title </div>
-                <div class="note-card-content">Here is the content of the card</div>
-            </div>
+            <a [routerLink]="[noteObj.id]" *ngFor="let noteObj of notes" >
+                <app-note-card [note]="noteObj"></app-note-card>
+            </a>
         </div>
 
         <div class="buttons-container buttons-centered">
