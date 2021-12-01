@@ -1,7 +1,11 @@
 <div class="todos-wrapper">
     <div class="container">
 
-        <app-todo-item *ngFor="let todoObj of todos" [todo]="todoObj" (click)="toggleCompleted(todoObj)">
+        <app-todo-item *ngFor="let todoObj of todos" 
+                        [todo]="todoObj" 
+                        (click)="toggleCompleted(todoObj)"
+                        (editClick)="onEditClick(todoObj)"
+                        (deleteClick)="onDeleteClick(todoObj)">
         </app-todo-item>
 
         <div class="buttons-container buttons-centered">
