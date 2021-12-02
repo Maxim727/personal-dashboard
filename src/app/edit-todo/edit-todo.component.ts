@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Todo } from '../shared/todo.model';
+import { TodoService } from '../shared/todo.service';
 
 @Component({
   selector: 'app-edit-todo',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTodoComponent implements OnInit {
 
-  constructor() { }
+  showValidationErrors!: boolean;
+  todo!: Todo;
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private todoservice: TodoService) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      const todoId = paramMap.get('id')
+      //@ts-ignore
+      this.todo = this.todoservice.getTodo(todoId)
+    } )
   }
 
+  //@ts-ignore
+  onFormSubmit(form: NgForm){
+
+    if(form.invalid) return this.showValidationErrors = true;
+
+    const todo = new Todo(form.value.text)
+    this.todoservice.updateTodo(this.todo.id, form.value)
+
+    this.router.navigateByUrl('/todos')
+  }
+  
 }

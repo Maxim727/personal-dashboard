@@ -2,7 +2,8 @@
     <div class="container">
         <div class="bookmark-tiles-container">
             
-            <app-bookmark-tile></app-bookmark-tile>
+            <app-bookmark-tile [bookmark]="bookmarkObj" *ngFor="let bookmarkObj of bookmarks"></app-bookmark-tile>
+
         </div>
     </div>
 </div>
