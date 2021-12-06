@@ -3,7 +3,15 @@
         <div class="bookmark-tiles-container">
             
             <app-bookmark-tile [bookmark]="bookmarkObj" *ngFor="let bookmarkObj of bookmarks"></app-bookmark-tile>
-
+            
         </div>
+
+        <div class="buttons-container buttons-centered">
+            <a routerLink="add" class="button add-button">
+                <i class="material-icons-outlined">add</i>
+                Add
+            </a>
+        </div>
+
     </div>
 </div>
