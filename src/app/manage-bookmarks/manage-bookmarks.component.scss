@@ -10,6 +10,8 @@
     backdrop-filter: blur(5px);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+
+    overflow: auto  ;
 }
 
 .content{
@@ -17,6 +19,8 @@
     //background-color: lightblue;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+
+    overflow: auto;
 }
 
 .sidebar-heading{
