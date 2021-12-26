@@ -41,6 +41,7 @@
     white-space: nowrap;
     max-width: 100%;
     text-overflow: ellipsis;
+    justify-content: center;
 
 }
 
@@ -49,4 +50,13 @@
     width: 32px;
     justify-content: center;
     align-items: center;
+
+    text-align: center;
+}
+
+.tile-icon.fallback{
+    background: white;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 600;
 }

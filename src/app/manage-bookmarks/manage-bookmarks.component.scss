@@ -33,9 +33,35 @@
 .sidebar-items{
     display: flex;
     flex-direction: column;
+
+    
 }
 
 .sidebar-item{
     color: rgba(white, 0.8);
     padding: 5px 25px;
+    position: relative;
+    &.selected{
+        color: rgba(white, 1)
+    }
 }   
+
+.sidebar-item::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: rgba(white, 0.8);
+
+    transition: 0.2s;
+    transform: scaleY(0);
+    //hide by default
+    opacity: 0;
+}
+
+.sidebar-item.selected::before{
+    opacity: 1;
+    transform: scaleY(1);
+}

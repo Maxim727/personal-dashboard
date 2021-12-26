@@ -19,6 +19,7 @@ import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { AddBookmarksComponent } from './add-bookmarks/add-bookmarks.component';
 import { ManageBookmarksComponent } from './manage-bookmarks/manage-bookmarks.component';
 import { EditBookmarkComponent } from './edit-bookmark/edit-bookmark.component';
+import { NotificaitonComponent } from './notificaiton/notificaiton.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { EditBookmarkComponent } from './edit-bookmark/edit-bookmark.component';
     AddBookmarksComponent,
     ManageBookmarksComponent,
     EditBookmarkComponent,
+    NotificaitonComponent,
     
   ],
   imports: [
