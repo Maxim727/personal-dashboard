@@ -33,11 +33,12 @@ export class EditBookmarkComponent implements OnInit {
   onFormSubmit(form: NgForm){
     console.log(form)
     this.bookmarkService.updateBookmark(this.bookmark.id, form.value)
-    this.notificationService.show('Bookmark updated')
+    this.notificationService.show('Bookmark updated 💾')
   }
 
   delete(){
     this.bookmarkService.deleteBookmark(this.bookmark.id)
     this.router.navigate(['../'], {relativeTo: this.route})
+    this.notificationService.show('Bookmark deleted ❌')
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from '../shared/notification.service';
 import { Todo } from '../shared/todo.model';
 import { TodoService } from '../shared/todo.service';
 
@@ -14,7 +15,8 @@ export class AddTodoComponent implements OnInit {
   showValidationErrors!: boolean;
 
   constructor(private todoService: TodoService,
-              private router: Router) { }
+              private router: Router,
+              private notifcationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -30,5 +32,6 @@ export class AddTodoComponent implements OnInit {
     this.todoService.addTodo(todo)
 
     this.router.navigateByUrl('/todos')
+    this.notifcationService.show("Todo added ✅")
   }
 }

@@ -7,7 +7,7 @@ export class Bookmark{
 
     constructor(name: string, url: string){
         this.id = uuidv4()
-        this.url = new URL(url)
+        this.url =  new URL(url)
         this.name = name
     }
 }

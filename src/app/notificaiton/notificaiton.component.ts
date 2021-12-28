@@ -14,7 +14,8 @@ import { NotificationService } from '../shared/notification.service';
           opacity: 0,
           transform: 'translateY(-25px)'
         }),
-        animate('150ms ease-out')
+        // the second value is the dealy
+        animate('150ms 120ms ease-out')
       ]),
       transition(':leave', [
         animate(150, style({
@@ -27,20 +28,20 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class NotificaitonComponent implements OnInit {
 
-  notification!: NotificationData;
+  notification!: NotificationData[];
   notificationTimeout: any;
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.notificationService.notifications.subscribe((notifcation: NotificationData) =>{
-      this.notification = notifcation
+      this.notification = Array(notifcation) 
 
       clearTimeout(this.notificationTimeout)
 
       this.notificationTimeout = setTimeout(() => {
         //@ts-ignore
         this.notification = null
-      }, this.notification.duration);
+      }, 2000);
     })
 
   }
