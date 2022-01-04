@@ -12,8 +12,8 @@
 
 
   <div class="top-section">
-    <h1>{{currentDate | date: 'shortTime'}}</h1>
-    <h2>{{currentDate | date: 'longDate'}}</h2>
+    <h1>{{currentDate | async |  date: 'HH:mm'}}</h1>
+    <h2>{{currentDate | async| date: 'd MMMM y'}}</h2>
   </div>
 
 
