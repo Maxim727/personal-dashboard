@@ -1,20 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
 import { Bookmark } from './bookmark.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookmarkService {
+export class BookmarkService implements OnDestroy {
 
-  bookmarks: Bookmark[] = [
-    new Bookmark('Wikipedia', 'http://wikipedia.org'),
-    new Bookmark('Google', 'http://google.com'),
-    new Bookmark('Youtube', 'http://youtube.com'),
-    new Bookmark('Facebook', 'http://facebook.com'),
-    new Bookmark('Twitter', 'http://twitter.com'),
-  ];
+  bookmarks: Bookmark[] = [];
+  storageListenSub: Subscription
 
-  constructor() { }
+  constructor() { 
+    this.loadState()
+
+    //@ts-ignore
+    this.storageListenSub = fromEvent(window, 'storage').subscribe((event: StorageEvent) => {
+      console.log('storage event fired ')
+      console.log(event)
+      if(event.key === 'bookmarks'){
+        this.loadState()
+      }
+    })
+  }
 
   getBookmarks(){
     return this.bookmarks
@@ -26,11 +33,14 @@ export class BookmarkService {
 
   addBookmark(bookmark: Bookmark){
     this.bookmarks.push(bookmark)
+    this.saveState()
+
   }
 
   updateBookmark(id: string, updateFields: Partial<Bookmark>){
     const bookmark = this.getBookmark(id)
     Object.assign(bookmark, updateFields)
+    this.saveState()
   }
 
   deleteBookmark(id: string){
@@ -39,5 +49,37 @@ export class BookmarkService {
     if(bookmarkIndex == -1) return
 
     this.bookmarks.splice(bookmarkIndex, 1)
+  }
+
+
+  saveState() {
+    localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks))
+  }
+
+  loadState() {
+    try {
+      //@ts-ignore
+      const todoInStorage = JSON.parse(localStorage.getItem('bookmarks'), (key, value) => {
+        if(key === 'url') return new URL(value)
+        return value
+      })
+
+      if(!todoInStorage) return
+      this.bookmarks.length = 0;
+      // clear the note array (while keeping the reference)
+
+      this.bookmarks.push(...todoInStorage)
+
+      //this.bookmarks = bookmarksInStorage; 
+    }
+    catch (e) {
+      console.warn('There was an error retrieving bookmarks from localstorage')
+      console.warn(e)
+    }
+  }
+
+  ngOnDestroy(): void {
+    if(this.storageListenSub) this.storageListenSub.unsubscribe() 
+
   }
 }

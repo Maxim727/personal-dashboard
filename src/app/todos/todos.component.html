@@ -1,7 +1,7 @@
 <div class="todos-wrapper">
     <div class="container">
 
-        <app-todo-item *ngFor="let todoObj of todos" 
+        <app-todo-item *ngFor="let todoObj of todos;" 
                         [todo]="todoObj" 
                         (click)="toggleCompleted(todoObj)"
                         (editClick)="onEditClick(todoObj)"

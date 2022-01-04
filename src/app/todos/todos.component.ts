@@ -23,6 +23,7 @@ import { TodoService } from '../shared/todo.service';
 export class TodosComponent implements OnInit {
 
   todos: Todo[] = []
+  
 
   constructor(private todoService: TodoService,
               private router: Router) { }
@@ -42,5 +43,9 @@ export class TodosComponent implements OnInit {
   onDeleteClick(todo: Todo){
     this.todoService.deleteTodo(todo.id)
   }
+
+  // trackById( item: Todo){
+  //   return item.id
+  // }
 
 }
